@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Butts</title>
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+    .button-container {
+        flex: 1;
+        text-align: center;
+    }
+    .dropdown-menu {
+        display: none;
+        margin-top: 8px;
+    }
+    .error {
+        color: red;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="button-container" id="ButtonClickEvent">
+        <button id="logButton">Click Me!</button>
+    </div>
+
+    <div class="button-container" id="DropdownMenu">
+        <button id="dropdownButton">Dropdown</button>
+        <div class="dropdown-menu">
+            <p>Sleep</p>
+            <p>Sleep</p>
+            <p>Sleep</p>
+        </div>
+    </div>
+
+    <div class="button-container" id="BackgroundChangeOnHover" style="padding: 20px; border: 1px solid #000; margin-top: 20px;">
+        Hover over me Nikita!
+    </div>
+
+    <div class="button-container" id="FormValidation">
+        <form id="myForm">
+            <input type="text" id="name" required>
+            <input type="submit" value="Submit">
+            <p id="errorMessage" class="error"></p>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Log message when button is clicked
+    document.getElementById('logButton').addEventListener('click', function() {
+        console.log('Button was clicked!');
+    });
+
+    // Dropdown menu show/hide
+    document.getElementById('dropdownButton').addEventListener('click', function() {
+        var dropdown = document.querySelector('.dropdown-menu');
+        dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+    });
+
+    // Change background color on mouse enter
+    document.getElementById('BackgroundChangeOnHover').addEventListener('mouseenter', function() {
+        this.style.backgroundColor = 'cyan';
+    });
+    document.getElementById('BackgroundChangeOnHover').addEventListener('mouseleave', function() {
+        this.style.backgroundColor = '';
+    });
+
+    // Form validation
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+        var name = document.getElementById('name').value;
+        if (!name) {
+            document.getElementById('errorMessage').innerText = 'Name is required!';
+        } else {
+            document.getElementById('errorMessage').innerText = '';
+            // Proceed with form submission or further processing here
+            alert('Form submitted successfully!');
+        }
+    });
+</script>
+
+</body>
+</html>
